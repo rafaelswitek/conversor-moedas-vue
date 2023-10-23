@@ -30,8 +30,11 @@
 export default {
   data() {
     return {
-      usuario: {},
-      mensagemErro: "",
+      usuario: {
+        email: "test@example.com",
+        password: 123456
+      },
+      mensagemErro: ""
     };
   },
   methods: {
@@ -39,15 +42,14 @@ export default {
       this.$store
         .dispatch("login", this.usuario)
         .then(() => this.$router.push({ name: "home" }))
-        .catch((err) => {
+        .catch(err => {
           if (err.request.status == 401) {
             this.mensagemErro = "Login ou senha inválido(s)";
           }
         });
-    },
-  },
+    }
+  }
 };
 </script>
 
-<style>
-</style>
+<style></style>
